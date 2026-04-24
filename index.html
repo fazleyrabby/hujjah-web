@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hujjah — Search. Understand. Reflect.</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@400;500&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+
+<!-- Tailwind v4 (browser build) -->
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+<style type="text/tailwindcss">
+  @theme {
+    --color-bg: #FDFDFB;
+    --color-ink: #1A1A1A;
+    --color-ink-2: #2A2A28;
+    --color-muted: #6B6B68;
+    --color-muted-2: #9A9A96;
+    --color-rule: #ECEAE3;
+    --color-rule-strong: #DCD9D0;
+    --color-panel: #F6F4EE;
+    --color-teal: #0D9488;
+    --color-teal-ink: #0B6B63;
+
+    --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+    --font-serif: "Instrument Serif", "Times New Roman", serif;
+    --font-mono: "Geist Mono", ui-monospace, Menlo, monospace;
+    --font-arabic: "Amiri", "Times New Roman", serif;
+  }
+
+  @layer base {
+    html, body {
+      background: var(--color-bg);
+      color: var(--color-ink);
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      letter-spacing: -0.005em;
+    }
+    body { font-size: 17px; line-height: 1.55; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; padding: 0; }
+    ::selection { background: color-mix(in oklab, var(--color-teal) 22%, transparent); }
+  }
+
+  @utility font-display {
+    font-family: var(--font-sans);
+    font-size: clamp(44px, 7.2vw, 92px);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    font-weight: 500;
+  }
+  @utility font-h2 {
+    font-size: clamp(30px, 3.6vw, 44px);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    font-weight: 500;
+  }
+  @utility italic-serif {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+  }
+  @utility mono-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  /* Blinking caret in mockup search field */
+  @keyframes blink { 50% { opacity: 0 } }
+  .caret-blink { animation: blink 1s steps(2) infinite }
+</style>
+</head>
+
+<body class="bg-bg text-ink font-sans antialiased">
+
+<!-- ============== NAV ============== -->
+<header class="sticky top-0 z-20 backdrop-blur-md bg-[color-mix(in_oklab,var(--color-bg)_88%,transparent)] border-b border-rule">
+  <div class="max-w-[1240px] mx-auto px-5 sm:px-8 lg:px-12 h-16 flex items-center justify-between">
+    <a href="#top" class="flex items-baseline gap-2.5">
+      <span class="relative inline-grid place-items-center w-[22px] h-[22px] rounded-full border border-ink translate-y-1 before:content-[''] before:w-1.5 before:h-1.5 before:bg-teal before:rounded-full"></span>
+      <span class="font-semibold text-[18px] tracking-[-0.02em]">Hujjah</span>
+      <span class="font-arabic text-[18px] text-muted translate-y-[1px]" aria-hidden="true">حجّة</span>
+    </a>
+    <nav aria-label="primary" class="flex items-center gap-8">
+      <a href="#features" class="hidden sm:inline text-[14px] text-muted hover:text-ink transition-colors">Features</a>
+      <a href="#how" class="hidden sm:inline text-[14px] text-muted hover:text-ink transition-colors">How it works</a>
+      <a href="#trust" class="hidden sm:inline text-[14px] text-muted hover:text-ink transition-colors">Trust</a>
+      <a href="#download" class="border border-ink rounded-full px-3.5 py-2 text-[13px] font-medium hover:bg-ink hover:text-bg transition-colors">Coming soon</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============== HERO ============== -->
+  <section class="relative overflow-hidden pt-24 pb-28">
+    <div class="max-w-[1240px] mx-auto px-5 sm:px-8 lg:px-12">
+      <div class="grid lg:grid-cols-[1.3fr_0.9fr] gap-12 lg:gap-16 items-end">
+
+        <div>
+          <div class="inline-flex items-center gap-2.5 mb-7">
+            <span class="w-1.5 h-1.5 rounded-full bg-teal"></span>
+            <span class="mono-label">In development &nbsp;·&nbsp; Cross-platform</span>
+          </div>
+
+          <h1 class="font-display mb-7">
+            Search.<br/>
+            Understand.<br/>
+            <span class="italic-serif tracking-[-0.02em] text-ink-2">Reflect.</span>
+          </h1>
+
+          <p class="max-w-[48ch] text-muted text-[19px] leading-[1.5] mb-10">
+            A privacy-first, offline Islamic research app. Native SQLite FTS5 search over the Qur'an and hadith — grounded by data, not generated by AI.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-3">
+            <a href="#download" class="group inline-flex items-center gap-2.5 px-5 py-3.5 rounded-full bg-ink text-bg text-[15px] font-medium hover:bg-teal-ink transition-colors whitespace-nowrap">
+              Notify me when it ships
+              <svg class="transition-transform group-hover:translate-x-0.5" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#how" class="inline-flex items-center px-5 py-3.5 rounded-full border border-rule-strong text-[15px] font-medium hover:border-ink transition-colors">Learn more</a>
+          </div>
+        </div>
+
+        <aside class="lg:border-l lg:border-rule lg:pl-8 border-t border-rule pt-8 lg:border-t-0 lg:pt-0 flex flex-col gap-7 text-muted">
+          <div class="mono-label">Engineering principle</div>
+          <p class="italic-serif text-[22px] leading-[1.35] text-ink-2 tracking-[-0.01em]">
+            <span class="block font-arabic not-italic text-[26px] text-ink mb-3.5 rtl">وَلَا تَقْفُ مَا لَيْسَ لَكَ بِهِ عِلْمٌ</span>
+            "Do not pursue that of which you have no knowledge."
+          </p>
+          <div class="text-[13px] text-muted-2">Truth comes from data, not AI generation. Every answer is retrieved, cited, and grounded.</div>
+        </aside>
+      </div>
+    </div>
+
+    <!-- Arabic watermark -->
+    <div aria-hidden="true" class="pointer-events-none select-none font-arabic text-rule absolute -right-10 -bottom-16 leading-none tracking-[-0.04em] rtl -z-10" style="font-size:clamp(180px,28vw,360px)">حجّة</div>
+  </section>
+
+  <hr class="h-px bg-rule border-0 m-0"/>
+
+  <!-- ============== CORE FEATURES ============== -->
+  <section id="features" class="py-24 md:py-28">
+    <div class="max-w-[1240px] mx-auto px-5 sm:px-8 lg:px-12">
+      <div class="grid md:grid-cols-[200px_1fr] gap-4 md:gap-12 items-baseline mb-12 md:mb-16">
+        <div class="flex items-center gap-3">
+          <span class="w-6 h-px bg-ink"></span>
+          <span class="mono-label">01 / Core</span>
+        </div>
+        <div>
+          <h2 class="font-h2 max-w-[22ch]">Designed for clarity. <span class="italic-serif">Built for reliability.</span></h2>
+          <p class="text-muted max-w-[52ch] mt-4 text-[17px]">A small number of things, done with care. No feeds, no notifications, no cloud.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t border-rule">
+        <!-- feature template -->
+        <div class="px-7 pt-10 pb-11 border-b border-rule sm:border-r lg:min-h-[240px] flex flex-col gap-3.5">
+          <div class="flex items-center gap-3">
+            <svg class="w-[22px] h-[22px] text-teal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="M12 18v4"/><path d="M4.93 4.93l2.83 2.83"/><path d="M16.24 16.24l2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="M4.93 19.07l2.83-2.83"/><path d="M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="3"/></svg>
+            <span class="ml-auto font-mono text-[11px] tracking-[0.08em] text-muted-2">01</span>
+          </div>
+          <h3 class="text-[17px] font-semibold tracking-[-0.01em]">Offline-first</h3>
+          <p class="text-muted text-[15px] leading-[1.55]">Works without internet after setup. Runs on low-end Android devices — no background sync, no updates required.</p>
+        </div>
+
+        <div class="px-7 pt-10 pb-11 border-b border-rule lg:border-r lg:min-h-[240px] flex flex-col gap-3.5">
+          <div class="flex items-center gap-3">
+            <svg class="w-[22px] h-[22px] text-teal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+            <span class="ml-auto font-mono text-[11px] tracking-[0.08em] text-muted-2">02</span>
+          </div>
+          <h3 class="text-[17px] font-semibold tracking-[-0.01em]">Instant search</h3>
+          <p class="text-muted text-[15px] leading-[1.55]">Native SQLite FTS5 full-text search across Qur'an and hadith, in English and Bengali. Results appear as you type.</p>
+        </div>
+
+        <div class="px-7 pt-10 pb-11 border-b border-rule sm:border-r lg:border-b-0 lg:min-h-[240px] flex flex-col gap-3.5">
+          <div class="flex items-center gap-3">
+            <svg class="w-[22px] h-[22px] text-teal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z"/><path d="M9 12l2 2 4-4"/></svg>
+            <span class="ml-auto font-mono text-[11px] tracking-[0.08em] text-muted-2">03</span>
+          </div>
+          <h3 class="text-[17px] font-semibold tracking-[-0.01em]">Authentic data</h3>
+          <p class="text-muted text-[15px] leading-[1.55]">Built on the Qur'an and hadith with full references — surah, ayah, book, and number on every result.</p>
+        </div>
+
+        <div class="px-7 pt-10 pb-11 lg:min-h-[240px] flex flex-col gap-3.5">
+          <div class="flex items-center gap-3">
+            <svg class="w-[22px] h-[22px] text-teal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+            <span class="ml-auto font-mono text-[11px] tracking-[0.08em] text-muted-2">04</span>
+          </div>
+          <h3 class="text-[17px] font-semibold tracking-[-0.01em]">Private by design</h3>
+          <p class="text-muted text-[15px] leading-[1.55]">No external APIs. No tracking. No cloud. Your reading stays on your device, always.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== HOW IT WORKS ============== -->
+  <section id="how" class="py-24 md:py-28">
+    <div class="max-w-[1240px] mx-auto px-5 sm:px-8 lg:px-12">
+      <div class="grid md:grid-cols-[200px_1fr] gap-4 md:gap-12 items-baseline mb-12 md:mb-16">
+        <div class="flex items-center gap-3">
+          <span class="w-6 h-px bg-ink"></span>
+          <span class="mono-label">02 / Method</span>
+        </div>
+        <div>
+          <h2 class="font-h2 max-w-[22ch]">Search. Retrieve. <span class="italic-serif">Explain.</span></h2>
+          <p class="text-muted max-w-[52ch] mt-4 text-[17px]">A strict retrieval-first pipeline. The AI never generates facts — it only summarizes what the database returns. No hallucinations. No generated facts.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 border-y border-rule">
+        <div class="p-8 md:p-10 md:border-r border-rule border-b md:border-b-0">
+          <div class="flex items-center gap-2.5 mb-9">
+            <span class="w-2 h-2 rounded-full bg-ink"></span>
+            <span class="mono-label">Step 01</span>
+          </div>
+          <div class="h-[140px] mb-7 flex items-center">
+            <svg viewBox="0 0 220 120" width="100%" height="100%" aria-hidden="true">
+              <rect x="1" y="24" width="200" height="32" rx="16" fill="none" stroke="#DCD9D0"/>
+              <circle cx="20" cy="40" r="6" fill="none" stroke="#0D9488" stroke-width="1.6"/>
+              <line x1="25" y1="45" x2="30" y2="50" stroke="#0D9488" stroke-width="1.6" stroke-linecap="round"/>
+              <text x="40" y="44" font-family="Inter" font-size="11" fill="#1A1A1A">patience in hardship</text>
+              <line x1="168" y1="36" x2="168" y2="46" stroke="#0D9488" stroke-width="1"/>
+              <text x="1" y="82" font-family="Geist Mono,monospace" font-size="9" fill="#6B6B68" letter-spacing="0.8">SQLITE · FTS5 · LOCAL</text>
+              <rect x="1" y="92" width="44" height="12" rx="2" fill="none" stroke="#DCD9D0"/>
+              <text x="7" y="101" font-family="Geist Mono,monospace" font-size="8" fill="#6B6B68">12 ms</text>
+              <rect x="52" y="92" width="54" height="12" rx="2" fill="none" stroke="#DCD9D0"/>
+              <text x="58" y="101" font-family="Geist Mono,monospace" font-size="8" fill="#6B6B68">143 hits</text>
+            </svg>
+          </div>
+          <h3 class="text-[22px] font-medium tracking-[-0.015em] mb-2.5">Search</h3>
+          <p class="text-muted text-[15px] max-w-[32ch]">Queries hit a native SQLite FTS5 index on-device. Arabic, English, and Bengali — instant, even on older phones.</p>
+        </div>
+
+        <div class="p-8 md:p-10 md:border-r border-rule border-b md:border-b-0">
+          <div class="flex items-center gap-2.5 mb-9">
+            <span class="w-2 h-2 rounded-full bg-ink"></span>
+            <span class="mono-label">Step 02</span>
+          </div>
+          <div class="h-[140px] mb-7 flex items-center">
+            <svg viewBox="0 0 220 120" width="100%" height="100%" aria-hidden="true">
+              <rect x="1" y="14" width="150" height="22" rx="3" fill="#F6F4EE" stroke="#DCD9D0"/>
+              <rect x="1" y="44" width="190" height="22" rx="3" fill="#F6F4EE" stroke="#DCD9D0"/>
+              <rect x="1" y="74" width="120" height="22" rx="3" fill="#F6F4EE" stroke="#DCD9D0"/>
+              <rect x="1" y="14" width="3" height="82" fill="#0D9488"/>
+              <text x="10" y="29" font-family="Geist Mono,monospace" font-size="9" fill="#6B6B68">QURAN · 2:153</text>
+              <text x="10" y="59" font-family="Geist Mono,monospace" font-size="9" fill="#6B6B68">BUKHARI · 6470</text>
+              <text x="10" y="89" font-family="Geist Mono,monospace" font-size="9" fill="#6B6B68">MUSLIM · 2999</text>
+            </svg>
+          </div>
+          <h3 class="text-[22px] font-medium tracking-[-0.015em] mb-2.5">Retrieve</h3>
+          <p class="text-muted text-[15px] max-w-[32ch]">Matching verses and hadith are pulled from the local corpus, with surah, book, and number intact. No network request leaves the device.</p>
+        </div>
+
+        <div class="p-8 md:p-10">
+          <div class="flex items-center gap-2.5 mb-9">
+            <span class="w-2 h-2 rounded-full bg-ink"></span>
+            <span class="mono-label">Step 03</span>
+          </div>
+          <div class="h-[140px] mb-7 flex items-center">
+            <svg viewBox="0 0 220 120" width="100%" height="100%" aria-hidden="true">
+              <rect x="1" y="10" width="170" height="14" rx="7" fill="#1A1A1A"/>
+              <rect x="1" y="30" width="200" height="8" rx="4" fill="#EFEEEA"/>
+              <rect x="1" y="42" width="180" height="8" rx="4" fill="#EFEEEA"/>
+              <rect x="1" y="54" width="140" height="8" rx="4" fill="#EFEEEA"/>
+              <rect x="1" y="74" width="70" height="16" rx="3" fill="none" stroke="#0D9488"/>
+              <text x="8" y="85" font-family="Geist Mono,monospace" font-size="8" fill="#0D9488">2:153 · 6470</text>
+            </svg>
+          </div>
+          <h3 class="text-[22px] font-medium tracking-[-0.015em] mb-2.5">Explain</h3>
+          <p class="text-muted text-[15px] max-w-[32ch]">A local model summarizes <em>only</em> the retrieved passages. If the sources are silent, Hujjah says so.</p>
+        </div>
+      </div>
+
+      <div class="mt-12 flex items-center gap-4 px-6 py-5 border border-rule rounded-md bg-panel">
+        <svg class="shrink-0 text-teal" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z"/><path d="M9 12l2 2 4-4"/></svg>
+        <p class="m-0 text-[15px] text-ink-2 tracking-[-0.005em]">
+          <strong class="font-semibold text-ink">No hallucinations. No generated facts.</strong>
+          <span class="text-muted">&nbsp;The AI never introduces information outside of what the local database returns.</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== APP-ONLY ============== -->
+  <section class="py-24 md:py-28 bg-panel border-y border-rule">
+    <div class="max-w-[1240px] mx-auto px-5 sm:px-8 lg:px-12">
+      <div class="grid md:grid-cols-[200px_1fr] gap-4 md:gap-12 items-baseline mb-12 md:mb-16">
+        <div class="flex items-center gap-3">
+          <span class="w-6 h-px bg-ink"></span>
+          <span class="mono-label">03 / In the app</span>
+        </div>
+        <div>
+          <h2 class="font-h2 max-w-[22ch]">A deeper library, <span class="italic-serif">on the device</span>.</h2>
+          <p class="text-ink-2 max-w-[52ch] mt-4 text-[17px]">Three tools that work without an account, without a connection, and without sending anything anywhere.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Card 1 -->
+        <div class="relative overflow-hidden bg-bg border border-rule rounded-md p-8 flex flex-col gap-4 min-h-[280px]">
+          <span class="absolute top-4 right-4 font-mono text-[10px] tracking-[0.12em] uppercase text-teal-ink border px-2 py-1 rounded-full" style="border-color:color-mix(in oklab, var(--color-teal) 30%, var(--color-rule));background:color-mix(in oklab, var(--color-teal) 6%, var(--color-bg))">Available in app</span>
+          <svg class="h-[100px] mt-2" viewBox="0 0 220 100" aria-hidden="true">
+            <g stroke="#DCD9D0" fill="none">
+              <rect x="1" y="10" width="210" height="18" rx="2"/>
+              <rect x="1" y="34" width="210" height="18" rx="2"/>
+              <rect x="1" y="58" width="210" height="18" rx="2"/>
+              <rect x="1" y="82" width="150" height="14" rx="2"/>
+            </g>
+            <rect x="1" y="10" width="3" height="18" fill="#0D9488"/>
+            <rect x="1" y="34" width="3" height="18" fill="#0D9488"/>
+            <rect x="1" y="58" width="3" height="18" fill="#DCD9D0"/>
+          </svg>
+          <h3 class="text-[19px] font-semibold tracking-[-0.01em]">Hadith database</h3>
+          <p class="text-muted text-[14.5px] leading-[1.55]">The Kutub al-Sittah — six canonical collections — browsable and searchable offline, with grade, narrator, and book references.</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="relative overflow-hidden bg-bg border border-rule rounded-md p-8 flex flex-col gap-4 min-h-[280px]">
+          <span class="absolute top-4 right-4 font-mono text-[10px] tracking-[0.12em] uppercase text-teal-ink border px-2 py-1 rounded-full" style="border-color:color-mix(in oklab, var(--color-teal) 30%, var(--color-rule));background:color-mix(in oklab, var(--color-teal) 6%, var(--color-bg))">Available in app</span>
+          <svg class="h-[100px] mt-2" viewBox="0 0 220 100" aria-hidden="true">
+            <g stroke="#DCD9D0" fill="none">
+              <circle cx="30" cy="50" r="12"/>
+              <circle cx="80" cy="30" r="10"/>
+              <circle cx="80" cy="70" r="10"/>
+              <circle cx="140" cy="20" r="8"/>
+              <circle cx="140" cy="50" r="8"/>
+              <circle cx="140" cy="80" r="8"/>
+              <line x1="42" y1="46" x2="70" y2="32"/>
+              <line x1="42" y1="54" x2="70" y2="68"/>
+              <line x1="90" y1="28" x2="132" y2="22"/>
+              <line x1="90" y1="32" x2="132" y2="48"/>
+              <line x1="90" y1="68" x2="132" y2="52"/>
+              <line x1="90" y1="72" x2="132" y2="78"/>
+            </g>
+            <circle cx="30" cy="50" r="3" fill="#0D9488"/>
+          </svg>
+          <h3 class="text-[19px] font-semibold tracking-[-0.01em]">Sanad chain explorer</h3>
+          <p class="text-muted text-[14.5px] leading-[1.55]">Walk the isnād of any hadith — every narrator, every link in the chain, laid out as a readable tree.</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="relative overflow-hidden bg-bg border border-rule rounded-md p-8 flex flex-col gap-4 min-h-[280px]">
+          <span class="absolute top-4 right-4 font-mono text-[10px] tracking-[0.12em] uppercase text-teal-ink border px-2 py-1 rounded-full" style="border-color:color-mix(in oklab, var(--color-teal) 30%, var(--color-rule));background:color-mix(in oklab, var(--color-teal) 6%, var(--color-bg))">Available in app</span>
+          <svg class="h-[100px] mt-2" viewBox="0 0 220 100" aria-hidden="true">
+            <g stroke="#DCD9D0" fill="none">
+              <rect x="1" y="16" width="140" height="22" rx="11"/>
+              <rect x="70" y="46" width="140" height="22" rx="11"/>
+              <rect x="1" y="76" width="110" height="14" rx="7"/>
+            </g>
+            <text x="12" y="32" font-family="Geist Mono,monospace" font-size="10" fill="#6B6B68">what is tawakkul?</text>
+            <rect x="70" y="46" width="3" height="22" fill="#0D9488"/>
+            <text x="82" y="62" font-family="Inter" font-size="10" fill="#1A1A1A">Trust after tying the camel…</text>
+          </svg>
+          <h3 class="text-[19px] font-semibold tracking-[-0.01em]">Offline AI explanations</h3>
+          <p class="text-muted text-[14.5px] leading-[1.55]">A small on-device model. It paraphrases retrieved passages — never invents them. Runs with no network, no account, no keys.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== SCREEN PREVIEW ============== -->
+  <section class="py-24 md:py-28">
+    <div class="max-w-[1240px] mx-auto px-5 sm:px-8 lg:px-12">
+      <div class="grid md:grid-cols-[200px_1fr] gap-4 md:gap-12 items-baseline mb-12 md:mb-16">
+        <div class="flex items-center gap-3">
+          <span class="w-6 h-px bg-ink"></span>
+          <span class="mono-label">04 / The app</span>
+        </div>
+        <div>
+          <h2 class="font-h2 max-w-[22ch]">Quiet on the eyes. <span class="italic-serif">Clear on the mind.</span></h2>
+          <p class="text-muted max-w-[52ch] mt-4 text-[17px]">Three moments from the app — the same typographic restraint you see here, on a smaller screen.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.2fr_1fr_1fr] gap-8 items-end pt-6">
+        <!-- Phone 1: search -->
+        <div class="max-w-[320px] mx-auto sm:max-w-none w-full">
+          <div class="aspect-[9/19] bg-ink rounded-[36px] p-2.5 shadow-[0_0_0_1px_#0000000d,0_30px_60px_-20px_#00000022,0_10px_24px_-12px_#00000018]">
+            <div class="w-full h-full bg-bg rounded-[28px] overflow-hidden flex flex-col">
+              <div class="flex justify-between items-center px-4.5 pt-3.5 pb-1.5 text-[10px] font-semibold"><span>9:41</span><span class="flex gap-[3px]"><i class="w-[3px] h-[3px] bg-ink rounded-full inline-block"></i><i class="w-[3px] h-[3px] bg-ink rounded-full inline-block"></i><i class="w-[3px] h-[3px] bg-ink rounded-full inline-block"></i></span></div>
+              <div class="flex items-center justify-between px-4 pt-2 pb-3 border-b border-rule">
+                <div class="text-[13px] font-semibold tracking-[-0.01em]">Search</div>
+                <svg class="w-4 h-4 text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg>
+              </div>
+              <div class="mx-3.5 mt-3.5 mb-2.5 border border-rule-strong rounded-[10px] px-3 py-2.5 flex items-center gap-2 text-[12px]">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9A9A96" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+                <span class="flex-1">patience</span>
+                <span class="caret-blink w-px h-3 bg-teal"></span>
+              </div>
+              <div class="px-4 py-3 border-b border-rule">
+                <div class="font-mono text-[9px] tracking-[0.1em] uppercase text-teal-ink mb-1.5">Qur'an · 2:153</div>
+                <div class="font-arabic text-[15px] rtl text-right leading-[1.5] mb-1.5">يَا أَيُّهَا الَّذِينَ آمَنُوا اسْتَعِينُوا بِالصَّبْرِ</div>
+                <div class="text-[11px] leading-[1.45] text-ink-2">O you who believe, seek help through <mark class="bg-[color-mix(in_oklab,var(--color-teal)_18%,transparent)] px-0.5 rounded-sm">patience</mark> and prayer. Indeed, Allah is with the patient.</div>
+              </div>
+              <div class="px-4 py-3 border-b border-rule">
+                <div class="font-mono text-[9px] tracking-[0.1em] uppercase text-teal-ink mb-1.5">Bukhārī · 1469</div>
+                <div class="text-[11px] leading-[1.45] text-ink-2">…and whoever remains <mark class="bg-[color-mix(in_oklab,var(--color-teal)_18%,transparent)] px-0.5 rounded-sm">patient</mark>, Allah will make him patient.</div>
+              </div>
+              <div class="px-4 py-3 border-b border-rule">
+                <div class="font-mono text-[9px] tracking-[0.1em] uppercase text-teal-ink mb-1.5">Muslim · 2999</div>
+                <div class="text-[11px] leading-[1.45] text-ink-2">Wondrous is the affair of the believer — if afflicted, he shows <mark class="bg-[color-mix(in_oklab,var(--color-teal)_18%,transparent)] px-0.5 rounded-sm">patience</mark>…</div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4.5 font-mono text-[11px] tracking-[0.1em] uppercase text-muted"><span class="text-ink mr-2">01</span>Search results</div>
+        </div>
+
+        <!-- Phone 2: verse -->
+        <div class="max-w-[320px] mx-auto sm:max-w-none w-full">
+          <div class="aspect-[9/19] bg-ink rounded-[36px] p-2.5 shadow-[0_0_0_1px_#0000000d,0_30px_60px_-20px_#00000022,0_10px_24px_-12px_#00000018]">
+            <div class="w-full h-full bg-bg rounded-[28px] overflow-hidden flex flex-col">
+              <div class="flex justify-between items-center px-4.5 pt-3.5 pb-1.5 text-[10px] font-semibold"><span>9:41</span><span class="flex gap-[3px]"><i class="w-[3px] h-[3px] bg-ink rounded-full inline-block"></i><i class="w-[3px] h-[3px] bg-ink rounded-full inline-block"></i><i class="w-[3px] h-[3px] bg-ink rounded-full inline-block"></i></span></div>
+              <div class="flex items-center justify-between px-4 pt-2 pb-3 border-b border-rule">
+                <div class="text-[13px] font-semibold tracking-[-0.01em]">Al-Baqarah</div>
+                <svg class="w-4 h-4 text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
+              </div>
+              <div class="px-4 pt-3.5 pb-1.5">
+                <div class="text-[15px] font-semibold tracking-[-0.01em]">Ayah 153</div>
+                <div class="font-mono text-[9px] tracking-[0.1em] uppercase text-muted mt-0.5">Surah 2 · Medinan</div>
+              </div>
+              <div class="px-4 py-3.5 flex flex-col gap-4">
+                <div class="font-arabic text-[20px] rtl text-right leading-[1.7]">يَا أَيُّهَا الَّذِينَ آمَنُوا اسْتَعِينُوا بِالصَّبْرِ وَالصَّلَاةِ ۚ إِنَّ اللَّهَ مَعَ الصَّابِرِينَ</div>
+                <div class="text-[12px] leading-[1.55] text-ink-2">O you who believe, seek help through patience and prayer. Indeed, Allah is with the patient.</div>
+                <div class="text-[12px] leading-[1.55] text-muted border-t border-dashed border-rule pt-3">হে ঈমানদারগণ, ধৈর্য ও সালাতের মাধ্যমে সাহায্য প্রার্থনা কর। নিশ্চয়ই আল্লাহ ধৈর্যশীলদের সাথে আছেন।</div>
+              </div>
+              <div class="mt-auto border-t border-rule flex justify-between px-4 py-2.5 text-[11px] text-muted">
+                <span>← 152</span>
+                <span class="font-mono tracking-[0.08em] uppercase">2 : 153</span>
+                <span>154 →</span>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4.5 font-mono text-[11px] tracking-[0.1em] uppercase text-muted"><span class="text-ink mr-2">02</span>Verse view</div>
+        </div>
+
+        <!-- Phone 3: chat -->
+        <div class="max-w-[320px] mx-auto sm:max-w-none sm:col-span-2 lg:col-span-1 sm:mx-auto w-full">
+          <div class="aspect-[9/19] bg-ink rounded-[36px] p-2.5 shadow-[0_0_0_1px_#0000000d,0_30px_60px_-20px_#00000022,0_10px_24px_-12px_#00000018]">
+            <div class="w-full h-full bg-bg rounded-[28px] overflow-hidden flex flex-col">
+              <div class="flex justify-between items-center px-4.5 pt-3.5 pb-1.5 text-[10px] font-semibold"><span>9:41</span><span class="flex gap-[3px]"><i class="w-[3px] h-[3px] bg-ink rounded-full inline-block"></i><i class="w-[3px] h-[3px] bg-ink rounded-full inline-block"></i><i class="w-[3px] h-[3px] bg-ink rounded-full inline-block"></i></span></div>
+              <div class="flex items-center justify-between px-4 pt-2 pb-3 border-b border-rule">
+                <div class="text-[13px] font-semibold tracking-[-0.01em]">Ask</div>
+                <svg class="w-4 h-4 text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg>
+              </div>
+              <div class="flex flex-col flex-1 px-3.5 py-3 gap-2.5 overflow-hidden">
+                <div class="self-end bg-ink text-bg text-[11.5px] leading-[1.5] max-w-[86%] px-2.5 py-2 rounded-[10px] rounded-br-[3px]">What does Islam teach about patience in hardship?</div>
+                <div class="self-start bg-panel text-ink text-[11.5px] leading-[1.5] max-w-[86%] px-2.5 py-2 rounded-[10px] border border-rule">
+                  Patience (ṣabr) is framed as an act of seeking help, paired with prayer. The Qur'an promises companionship to those who persevere, and hadith extend this to reward for any difficulty a believer meets.
+                  <span class="block mt-1.5 font-mono text-[9px] tracking-[0.1em] uppercase text-teal-ink">SOURCES · 2:153 · BUKHĀRĪ 1469 · MUSLIM 2999</span>
+                </div>
+                <div class="self-end bg-ink text-bg text-[11.5px] leading-[1.5] max-w-[86%] px-2.5 py-2 rounded-[10px] rounded-br-[3px]">Is it only about enduring?</div>
+              </div>
+              <div class="mx-3.5 mb-3.5 border border-rule-strong rounded-full px-3 py-2 text-[11px] text-muted flex items-center justify-between">
+                <span>Ask a question…</span>
+                <span class="w-5 h-5 bg-teal rounded-full grid place-items-center text-white text-[10px]">↑</span>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4.5 font-mono text-[11px] tracking-[0.1em] uppercase text-muted"><span class="text-ink mr-2">03</span>Chat with citations</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== TRUST ============== -->
+  <section id="trust" class="py-28 md:py-36 border-t border-rule">
+    <div class="max-w-[1240px] mx-auto px-5 sm:px-8 lg:px-12">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+        <div>
+          <div class="flex items-center gap-3 mb-7">
+            <span class="w-6 h-px bg-ink"></span>
+            <span class="mono-label">05 / Trust</span>
+          </div>
+          <h2 class="font-medium leading-[1.02] tracking-[-0.03em] m-0" style="font-size:clamp(34px,4.5vw,56px)">
+            A tool you can trust<br/><span class="italic-serif">because nothing leaves.</span>
+          </h2>
+          <p class="text-muted max-w-[38ch] mt-6 text-[17px]">
+            Hujjah is built by engineers who care about correctness. A research tool for sacred text should not be a surveillance product.
+          </p>
+        </div>
+
+        <ul class="list-none m-0 p-0 flex flex-col">
+          <li class="py-6 border-t border-rule grid grid-cols-[32px_1fr_auto] gap-5 items-start">
+            <span class="font-mono text-[11px] text-muted tracking-[0.08em] pt-1">01</span>
+            <div>
+              <p class="text-[18px] font-medium tracking-[-0.01em] m-0 mb-1">Works offline</p>
+              <p class="text-muted text-[14.5px] m-0 max-w-[42ch]">Once installed, Hujjah runs entirely on your device. No connection required, ever.</p>
+            </div>
+            <svg class="w-[18px] h-[18px] text-teal mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          </li>
+          <li class="py-6 border-t border-rule grid grid-cols-[32px_1fr_auto] gap-5 items-start">
+            <span class="font-mono text-[11px] text-muted tracking-[0.08em] pt-1">02</span>
+            <div>
+              <p class="text-[18px] font-medium tracking-[-0.01em] m-0 mb-1">No external APIs</p>
+              <p class="text-muted text-[14.5px] m-0 max-w-[42ch]">Search, retrieval, and explanation all happen locally. There is no server to call.</p>
+            </div>
+            <svg class="w-[18px] h-[18px] text-teal mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          </li>
+          <li class="py-6 border-t border-rule grid grid-cols-[32px_1fr_auto] gap-5 items-start">
+            <span class="font-mono text-[11px] text-muted tracking-[0.08em] pt-1">03</span>
+            <div>
+              <p class="text-[18px] font-medium tracking-[-0.01em] m-0 mb-1">Your data stays on your device</p>
+              <p class="text-muted text-[14.5px] m-0 max-w-[42ch]">No accounts. No telemetry. No backups we can read. The app doesn't know who you are.</p>
+            </div>
+            <svg class="w-[18px] h-[18px] text-teal mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          </li>
+          <li class="py-6 border-y border-rule grid grid-cols-[32px_1fr_auto] gap-5 items-start">
+            <span class="font-mono text-[11px] text-muted tracking-[0.08em] pt-1">04</span>
+            <div>
+              <p class="text-[18px] font-medium tracking-[-0.01em] m-0 mb-1">Built for accuracy, not speculation</p>
+              <p class="text-muted text-[14.5px] m-0 max-w-[42ch]">Explanations are anchored to the text they cite. When the sources are silent, Hujjah says so.</p>
+            </div>
+            <svg class="w-[18px] h-[18px] text-teal mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== DOWNLOAD ============== -->
+  <section id="download" class="relative overflow-hidden py-28 bg-ink text-bg">
+    <div aria-hidden="true" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-arabic leading-none pointer-events-none select-none text-white/5" style="font-size:clamp(240px,36vw,520px)">حجّة</div>
+
+    <div class="relative max-w-[1240px] mx-auto px-5 sm:px-8 lg:px-12 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <div>
+        <div class="mono-label mb-6" style="color:#9A9A96">06 / Get the app</div>
+        <h2 class="font-medium leading-[1.02] tracking-[-0.03em] text-bg m-0 mb-5" style="font-size:clamp(34px,4.6vw,58px)">
+          Coming soon, <span class="italic-serif" style="color:#E9E8E3">everywhere you read.</span>
+        </h2>
+        <p class="text-[#C9C8C2] max-w-[44ch] text-[17px] m-0">Hujjah is built once and shipping across Android, iOS, macOS, and Windows. A small, independent project — released slowly, tested carefully, made to last.</p>
+      </div>
+
+      <div class="flex flex-col gap-5">
+        <a href="#" aria-disabled="true" class="group flex items-center gap-5 px-6 py-5 rounded-2xl bg-white/5 border border-white/15 hover:bg-white/10 hover:border-white/30 transition-colors">
+          <div class="flex items-center gap-3 shrink-0">
+            <!-- Android -->
+            <svg class="w-6 h-6 text-[#E9E8E3]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 20.5 14 12 3.6 3.5a1.5 1.5 0 0 0-.6 1.2v14.6a1.5 1.5 0 0 0 .6 1.2zM14.8 12.6 17.3 15l2.9-1.65c.9-.5.9-1.7 0-2.2L17.3 9.5 14.8 12zm-.7-1.2 2.4-2.35L5.5 2.9l8.6 8.5zM5.5 21.1l11-6.25-2.4-2.35-8.6 8.6z"/></svg>
+            <!-- iOS (Apple) -->
+            <svg class="w-6 h-6 text-[#E9E8E3]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.5c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.8-2.1-1.6-.2-3.1.9-3.9.9s-2.1-.9-3.4-.9c-1.8 0-3.4 1-4.3 2.6-1.8 3.2-.5 7.9 1.3 10.5.9 1.3 1.9 2.7 3.2 2.6 1.3-.1 1.8-.8 3.3-.8s2 .8 3.3.8c1.4 0 2.2-1.3 3.1-2.6.6-.9 1.1-1.9 1.4-2.9-2-.8-3.4-2.7-3.4-4.2zM13.6 4.9c.7-.9 1.2-2.1 1-3.3-1.1 0-2.4.7-3.2 1.6-.7.8-1.3 2-1.1 3.2 1.2.1 2.5-.6 3.3-1.5z"/></svg>
+            <!-- macOS (same glyph, second) -->
+            <svg class="w-6 h-6 text-[#E9E8E3]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.7 17.4c-.4.9-.9 1.8-1.5 2.6-.8 1-1.5 1.7-2 2-.8.5-1.7.8-2.6.8-.7 0-1.5-.2-2.4-.6-.9-.4-1.8-.6-2.6-.6-.8 0-1.7.2-2.6.6-.9.4-1.7.6-2.3.6-.9 0-1.8-.3-2.6-.9-.6-.4-1.3-1.1-2-2.1-.8-1.1-1.5-2.3-2-3.7C.4 14.8 0 13.3 0 11.9c0-1.6.3-3 1-4.2.5-.9 1.2-1.7 2.1-2.2.9-.5 1.8-.8 2.9-.8.7 0 1.6.2 2.7.7 1.1.4 1.8.7 2.1.7.2 0 1-.3 2.3-.8 1.2-.5 2.3-.7 3.1-.6 2.3.2 4 1.1 5.2 2.7-2 1.3-3.1 3-3 5.3 0 1.8.7 3.3 1.9 4.5.6.5 1.2 1 1.9 1.3-.2.4-.3.8-.5 1.1zM14.2 0c0 1.2-.5 2.3-1.3 3.4-1 1.2-2.3 1.9-3.6 1.8v-.5c0-1.1.5-2.3 1.4-3.4.5-.5 1-1 1.7-1.3.6-.3 1.2-.5 1.8-.5v.5z"/></svg>
+            <!-- Windows -->
+            <svg class="w-6 h-6 text-[#E9E8E3]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.48 10.5 4.45V11.5H3V5.48ZM3 12.5H10.5V19.55L3 18.52V12.5ZM11.5 4.3 21 3V11.5H11.5V4.3ZM11.5 12.5H21V21L11.5 19.7V12.5Z"/></svg>
+          </div>
+          <span class="h-8 w-px bg-white/15"></span>
+          <span class="flex-1">
+            <span class="block font-mono text-[10px] tracking-[0.12em] uppercase text-[#9A9A96]">Coming soon</span>
+            <span class="block text-[17px] font-medium tracking-[-0.01em] text-bg mt-1">All platforms · Android, iOS, macOS, Windows</span>
+          </span>
+          <svg class="w-5 h-5 text-[#9A9A96] transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
+        </a>
+        <p class="text-[13px] text-[#9A9A96] m-0">One build. One release. Notified the moment it ships.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== FOOTER ============== -->
+  <footer class="py-12">
+    <div class="max-w-[1240px] mx-auto px-5 sm:px-8 lg:px-12 flex flex-wrap justify-between items-center gap-6">
+      <div class="flex items-baseline gap-3 text-muted text-[13px]">
+        <span class="relative inline-grid place-items-center w-[22px] h-[22px] rounded-full border border-ink translate-y-1 before:content-[''] before:w-1.5 before:h-1.5 before:bg-teal before:rounded-full"></span>
+        <span class="text-ink font-semibold">Hujjah</span>
+        <span class="font-arabic text-muted-2" aria-hidden="true">حجّة</span>
+        <span>— a quiet tool.</span>
+      </div>
+      <nav aria-label="footer" class="flex gap-7 text-[13px] text-muted">
+        <a href="#" class="hover:text-ink transition-colors">About</a>
+        <a href="#" class="hover:text-ink transition-colors">Privacy</a>
+        <a href="#" class="hover:text-ink transition-colors">GitHub</a>
+      </nav>
+    </div>
+    <div class="max-w-[1240px] mx-auto px-5 sm:px-8 lg:px-12 mt-8 flex flex-wrap justify-between gap-2 text-muted-2 text-[12px]">
+      <span class="mono-label">© 2026 · Made with care</span>
+      <span class="mono-label">Not affiliated with any institution</span>
+    </div>
+  </footer>
+
+</main>
+
+</body>
+</html>
